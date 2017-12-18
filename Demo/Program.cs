@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using ExpressionHelper;
+using ExpressionHelper.Model;
 
 namespace Demo
 {
@@ -8,9 +10,13 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            Expression<Func<string, bool>> exp = x => x.Length == 1;
+            var a = "123";
+            Expression<Func<string, bool>> exp =
+                x => x == "1" ||
+                x.Contains(a);
 
-            HelperTool.GetPort(exp.Body).AddWhere(exp.Body);
+            var exps = new List<ExpressionInfo>();
+            HelperTool.AddWhere(exp.Body, exps);
         }
     }
 }

@@ -1,12 +1,15 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using System.Linq.Expressions;
+using ExpressionHelper.Model;
 
 namespace ExpressionHelper.Helpers
 {
     public class BinaryExpressionHelper : BaseExpressionHelper<BinaryExpression>
     {
-        public override void AddWhere(BinaryExpression exp)
+        public override void AddWhere(BinaryExpression exp, List<ExpressionInfo> args)
         {
-            throw new System.NotImplementedException();
+            HelperTool.AddWhere(exp.Left, args);
+            HelperTool.AddWhere(exp.Right, args);
         }
     }
 }

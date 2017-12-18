@@ -1,13 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
+using System.Text;
 using ExpressionHelper.Helpers;
+using ExpressionHelper.Model;
 
 namespace ExpressionHelper
 {
     public class HelperTool
     {
-        private static readonly string[] ExpressionHelpers = { "BinaryExpression" };
+        private static readonly string[] ExpressionHelpers =
+        {
+            "BinaryExpression",
+            "MemberExpression",
+            "ParameterExpression",
+            "ConstantExpression",
+            "MethodCallExpression"
+        };
 
         private static readonly Dictionary<string, IExpressionHelper> Ports = InitPorts();
 
@@ -35,7 +45,27 @@ namespace ExpressionHelper
         public static IExpressionHelper GetPort(Expression exp)
         {
             var type = SwitchExpression(exp);
+            Log(exp.ToString(), type);
             return Ports[type];
+        }
+
+        public static void Log(string body, string type)
+        {
+            var path = "D:\\Self\\Expression" + "\\log\\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            var str = new StringBuilder();
+            str.AppendLine("----------------------------------------------------------");
+            str.AppendLine("时间:" + DateTime.Now);
+            str.AppendLine("表达式类型:" + type);
+            str.AppendLine("表达式Body:" + body);
+            str.AppendLine("----------------------------------------------------------\r\n\r\n");
+            try
+            {
+                File.AppendAllText(path, str.ToString(), Encoding.UTF8);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         /// <summary>
@@ -101,6 +131,11 @@ namespace ExpressionHelper
                     throw new Exception(nameof(exp));
             }
 
+        }
+
+        public static void AddWhere(Expression exp, List<ExpressionInfo> args)
+        {
+            GetPort(exp).AddWhere(exp, args);
         }
     }
 }

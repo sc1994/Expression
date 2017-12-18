@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ConstantExpressionHelper.cs" />
+    <Compile Include="Helpers\MemberExpressionHelper.cs" />
+    <Compile Include="Helpers\MethodCallExpressionHelper.cs" />
+    <Compile Include="Helpers\ParameterExpressionHelper.cs" />
     <Compile Include="HelperTool.cs" />
     <Compile Include="Helpers\BaseExpressionHelper.cs" />
     <Compile Include="Helpers\BinaryExpressionHelper.cs" />
     <Compile Include="Helpers\IExpressionHelper.cs" />
+    <Compile Include="Model\ExpressionInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
