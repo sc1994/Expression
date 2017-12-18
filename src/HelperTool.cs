@@ -5,12 +5,16 @@ using ExpressionHelper.Helpers;
 
 namespace ExpressionHelper
 {
-    class HelperTool
+    public class HelperTool
     {
         private static readonly string[] ExpressionHelpers = { "BinaryExpression" };
 
         private static readonly Dictionary<string, IExpressionHelper> Ports = InitPorts();
 
+        /// <summary>
+        /// 初始化接口实例
+        /// </summary>
+        /// <returns></returns>
         public static Dictionary<string, IExpressionHelper> InitPorts()
         {
             var ports = new Dictionary<string, IExpressionHelper>();
@@ -23,11 +27,22 @@ namespace ExpressionHelper
             return ports;
         }
 
-        public static IExpressionHelper GetPort(string expType)
+        /// <summary>
+        /// 获取一个对应类型的接口实例
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
+        public static IExpressionHelper GetPort(Expression exp)
         {
-            return Ports[expType];
+            var type = SwitchExpression(exp);
+            return Ports[type];
         }
 
+        /// <summary>
+        /// 获取表达的类型描述
+        /// </summary>
+        /// <param name="exp"></param>
+        /// <returns></returns>
         public static string SwitchExpression(Expression exp)
         {
             switch (exp)
@@ -85,7 +100,7 @@ namespace ExpressionHelper
                 default:
                     throw new Exception(nameof(exp));
             }
-            
+
         }
     }
 }

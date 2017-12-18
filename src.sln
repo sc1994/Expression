@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionHelper", "ExpressionHelper\ExpressionHelper.csproj", "{658602ED-DEB2-4FD2-A8DC-159756F3DD30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpressionHelper", "src\ExpressionHelper.csproj", "{658602ED-DEB2-4FD2-A8DC-159756F3DD30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{EA46CC43-EDB0-49A5-B749-5E8F3604BF55}"
 EndProject
