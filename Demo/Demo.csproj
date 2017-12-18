@@ -48,5 +48,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\ExpressionHelper.csproj">
+      <Project>{658602ed-deb2-4fd2-a8dc-159756f3dd30}</Project>
+      <Name>ExpressionHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
+using ExpressionHelper;
 
 namespace Demo
 {
@@ -10,6 +8,9 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+            Expression<Func<string, bool>> exp = x => x.Length == 1;
+
+            HelperTool.GetPort(exp.Body).AddWhere(exp.Body);
         }
     }
 }
