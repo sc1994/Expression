@@ -6,7 +6,7 @@ namespace ExpressionHelper.Helpers
 {
     public class ParameterExpressionHelper:BaseExpressionHelper<ParameterExpression>
     {
-        public override void AddWhere(ParameterExpression exp, List<ExpressionInfo> args)
+        public override void AddWhere(ParameterExpression exp, ExpressionInfo arg)
         {
             
         }

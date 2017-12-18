@@ -45,11 +45,12 @@ namespace ExpressionHelper
         public static IExpressionHelper GetPort(Expression exp)
         {
             var type = SwitchExpression(exp);
-            Log(exp.ToString(), type);
+            //Console.WriteLine(type);
+            //Log(exp.ToString(), type);
             return Ports[type];
         }
 
-        public static void Log(string body, string type)
+        public static void Log(object body, string type)
         {
             var path = "D:\\Self\\Expression" + "\\log\\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
             var str = new StringBuilder();
@@ -60,6 +61,7 @@ namespace ExpressionHelper
             str.AppendLine("----------------------------------------------------------\r\n\r\n");
             try
             {
+                Console.Write(str);
                 File.AppendAllText(path, str.ToString(), Encoding.UTF8);
             }
             catch (Exception)
@@ -133,9 +135,9 @@ namespace ExpressionHelper
 
         }
 
-        public static void AddWhere(Expression exp, List<ExpressionInfo> args)
+        public static void AddWhere(Expression exp, ExpressionInfo arg)
         {
-            GetPort(exp).AddWhere(exp, args);
+            GetPort(exp).AddWhere(exp, arg);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace ExpressionHelper.Helpers
 {
     public interface IExpressionHelper
     {
-        void AddWhere(Expression exp, List<ExpressionInfo> args);
+        void AddWhere(Expression exp, ExpressionInfo arg);
     }
 }

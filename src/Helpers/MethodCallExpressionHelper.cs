@@ -6,11 +6,11 @@ namespace ExpressionHelper.Helpers
 {
     public class MethodCallExpressionHelper : BaseExpressionHelper<MethodCallExpression>
     {
-        public override void AddWhere(MethodCallExpression exp, List<ExpressionInfo> args)
+        public override void AddWhere(MethodCallExpression exp, ExpressionInfo arg)
         {
-            foreach (var arg in exp.Arguments)
+            foreach (var argument in exp.Arguments)
             {
-                HelperTool.AddWhere(arg, args);
+                HelperTool.AddWhere(argument, arg);
             }
         }
     }
