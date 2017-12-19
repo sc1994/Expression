@@ -14,11 +14,76 @@ namespace ExpressionHelper.Helpers
             {
                 var type = exp.Value.GetType();
                 var value = type.InvokeMember(arg.ConstantName, BindingFlags.GetField, null, exp.Value, null);
-                Console.WriteLine(value);
+                Console.WriteLine(GetValue(value));
             }
             else
             {
                 Console.WriteLine(exp.Value);
+            }
+        }
+
+        private string GetValue(object value)
+        {
+            switch (value)
+            {
+                case int _:
+                case uint _:
+                case short _:
+                case ushort _:
+                case long _:
+                case ulong _:
+                case decimal _:
+                case float _:
+                case double _:
+                case char _:
+                case string _:
+                    return value.ToString();
+                case int[] _:
+                    return string.Join(",", value as int[] ?? throw new InvalidOperationException());
+                case uint[] _:
+                    return string.Join(",", value as uint[] ?? throw new InvalidOperationException());
+                case short[] _:
+                    return string.Join(",", value as short[] ?? throw new InvalidOperationException());
+                case ushort[] _:
+                    return string.Join(",", value as ushort[] ?? throw new InvalidOperationException());
+                case long[] _:
+                    return string.Join(",", value as long[] ?? throw new InvalidOperationException());
+                case ulong[] _:
+                    return string.Join(",", value as ulong[] ?? throw new InvalidOperationException());
+                case decimal[] _:
+                    return string.Join(",", value as decimal[] ?? throw new InvalidOperationException());
+                case float[] _:
+                    return string.Join(",", value as float[] ?? throw new InvalidOperationException());
+                case double[] _:
+                    return string.Join(",", value as double[] ?? throw new InvalidOperationException());
+                case char[] _:
+                    return string.Join(",", value as char[] ?? throw new InvalidOperationException());
+                case string[] _:
+                    return string.Join(",", value as string[] ?? throw new InvalidOperationException());
+                case List<int> _:
+                    return string.Join(",", value as List<int> ?? throw new InvalidOperationException());
+                case List<uint> _:
+                    return string.Join(",", value as List<uint> ?? throw new InvalidOperationException());
+                case List<short> _:
+                    return string.Join(",", value as List<short> ?? throw new InvalidOperationException());
+                case List<ushort> _:
+                    return string.Join(",", value as List<ushort> ?? throw new InvalidOperationException());
+                case List<long> _:
+                    return string.Join(",", value as List<long> ?? throw new InvalidOperationException());
+                case List<ulong> _:
+                    return string.Join(",", value as List<ulong> ?? throw new InvalidOperationException());
+                case List<decimal> _:
+                    return string.Join(",", value as List<decimal> ?? throw new InvalidOperationException());
+                case List<float> _:
+                    return string.Join(",", value as List<float> ?? throw new InvalidOperationException());
+                case List<double> _:
+                    return string.Join(",", value as List<double> ?? throw new InvalidOperationException());
+                case List<char> _:
+                    return string.Join(",", value as List<char> ?? throw new InvalidOperationException());
+                case List<string> _:
+                    return string.Join(",", value as List<string> ?? throw new InvalidOperationException());
+                default:
+                    throw new Exception("不支持的类型, 请自行添加类型支持\r\n" + nameof(value));
             }
         }
     }

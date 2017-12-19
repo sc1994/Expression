@@ -22,7 +22,7 @@ namespace ExpressionHelper.Helpers
             {
                 var fi = (PropertyInfo)exp.Member;
                 var val = fi.GetValue(((ConstantExpression)exp.Expression)?.Value, null);
-                //HelperTool.Log(val.ToString(), "MemberExpression");
+                Console.WriteLine(val);
             }
         }
     }

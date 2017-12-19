@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConstantExpressionHelper.cs" />
+    <Compile Include="Helpers\LambdaExpressionHelper.cs" />
     <Compile Include="Helpers\MemberExpressionHelper.cs" />
     <Compile Include="Helpers\MethodCallExpressionHelper.cs" />
     <Compile Include="Helpers\ParameterExpressionHelper.cs" />

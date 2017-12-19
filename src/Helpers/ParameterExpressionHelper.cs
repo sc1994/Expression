@@ -8,7 +8,7 @@ namespace ExpressionHelper.Helpers
     {
         public override void AddWhere(ParameterExpression exp, ExpressionInfo arg)
         {
-            Console.WriteLine(exp.Name);   
+            Console.WriteLine(exp.Name);
         }
     }
 }
