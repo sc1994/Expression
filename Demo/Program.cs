@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper;
@@ -12,20 +11,18 @@ namespace Demo
         static void Main(string[] args)
         {
             var a = DateTime.Now;
-            var b = "abcdef";
             var c = new[] { 2, 3, 4, 5 };
             var arg = new ExpressionInfo();
             Expression<Func<Product, bool>> exp;
 
-
-            exp = x => 
-            b.StartsWith(x.Name) 
-            && b.Contains(x.Name) 
-            || c.Any(u => u == x.Id) 
-            && x.Data == DateTime.Now;
+                
+            var b = "((abcdef))";
+            exp = x =>
+               x.Name.StartsWith(b.TrimStart(')').TrimEnd('('));
 
             HelperTool.AddWhere(exp.Body, arg);
-            
+
+            //todo
 
             //exp = x => b.Contains(x.Name);
             //HelperTool.AddWhere(exp.Body, arg);
@@ -36,8 +33,13 @@ namespace Demo
             //exp = x => x.Data == DateTime.Now;
             //HelperTool.AddWhere(exp.Body, arg);
 
+            //Expression<Func<Product, dynamic>> exp1 =
+            //    x => new
+            //    {
+            //        x.Id
+            //    };
 
-
+            //HelperTool.AddWhere(exp1.Body, arg);
 
 
 
