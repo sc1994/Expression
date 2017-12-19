@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 using ExpressionHelper.Model;
 
 namespace ExpressionHelper.Helpers
@@ -7,10 +8,12 @@ namespace ExpressionHelper.Helpers
     {
         public override void AddWhere(MethodCallExpression exp, ExpressionInfo arg)
         {
+            Console.WriteLine(exp.Method.Name);
             foreach (var argument in exp.Arguments)
             {
                 HelperTool.AddWhere(argument, arg);
             }
+            HelperTool.AddWhere(exp.Object, arg);
         }
     }
 }

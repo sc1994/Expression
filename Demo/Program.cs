@@ -12,15 +12,29 @@ namespace Demo
         static void Main(string[] args)
         {
             var a = DateTime.Now;
-            var b = "1";
+            var b = "abcdef";
             var c = new[] { 2, 3, 4, 5 };
-            Expression<Func<Product, bool>> exp =
-                x => c.Contains(x.Id)
-                || c.Any(u => u == x.Id)
-                && x.Data == DateTime.Now;
-
             var arg = new ExpressionInfo();
+            Expression<Func<Product, bool>> exp;
+
+
+            exp = x => 
+            b.StartsWith(x.Name) 
+            && b.Contains(x.Name) 
+            || c.Any(u => u == x.Id) 
+            && x.Data == DateTime.Now;
+
             HelperTool.AddWhere(exp.Body, arg);
+            
+
+            //exp = x => b.Contains(x.Name);
+            //HelperTool.AddWhere(exp.Body, arg);
+
+            //exp = x => c.Any(u => u == x.Id);
+            //HelperTool.AddWhere(exp.Body, arg);
+
+            //exp = x => x.Data == DateTime.Now;
+            //HelperTool.AddWhere(exp.Body, arg);
 
 
 
@@ -44,6 +58,9 @@ namespace Demo
 
 
 
+
+
+            Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
             Console.WriteLine((DateTime.Now - a).ToString("c"));
             Console.Write("END");
             Console.ReadLine();

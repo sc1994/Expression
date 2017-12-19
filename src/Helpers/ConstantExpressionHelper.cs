@@ -20,10 +20,16 @@ namespace ExpressionHelper.Helpers
             {
                 Console.WriteLine(exp.Value);
             }
-            Console.WriteLine(exp.NodeType.ToString());
+
         }
 
-        private string GetValue(object value)
+        /// <summary>
+        /// 这边是为了能打印出结果,
+        /// 如果用做sql,再使用Dapper 做ORM框架时,无需解析内容,直接放入object就可以了
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private object GetValue(object value)
         {
             switch (value)
             {
@@ -38,7 +44,7 @@ namespace ExpressionHelper.Helpers
                 case double _:
                 case char _:
                 case string _:
-                    return value.ToString();
+                    return value;
                 case int[] _:
                     return string.Join(",", value as int[] ?? throw new InvalidOperationException());
                 case uint[] _:

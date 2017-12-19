@@ -11,6 +11,10 @@ namespace ExpressionHelper.Helpers
             HelperTool.AddWhere(exp.Left, arg);
 
             Console.WriteLine(exp.NodeType.ToString());
+            if (exp.NodeType == ExpressionType.AndAlso || exp.NodeType == ExpressionType.OrElse)
+            {
+                Console.WriteLine();
+            }
 
             HelperTool.AddWhere(exp.Right, arg);
         }

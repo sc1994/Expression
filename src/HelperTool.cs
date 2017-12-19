@@ -25,7 +25,10 @@ namespace ExpressionHelper
 
         public static void AddWhere(Expression exp, ExpressionInfo arg)
         {
-            GetPort(exp).AddWhere(exp, arg);
+            if (exp != null)
+            {
+                GetPort(exp).AddWhere(exp, arg);
+            }
         }
 
         /// <summary>
