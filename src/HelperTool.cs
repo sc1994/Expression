@@ -17,7 +17,8 @@ namespace ExpressionHelper
             "ParameterExpression",
             "ConstantExpression",
             "MethodCallExpression",
-            "LambdaExpression"
+            "LambdaExpression",
+            "UnaryExpression"
         };
 
         private static readonly Dictionary<string, IExpressionHelper> Ports = InitPorts();

@@ -20,6 +20,7 @@ namespace ExpressionHelper.Helpers
             {
                 Console.WriteLine(exp.Value);
             }
+            Console.WriteLine(exp.NodeType.ToString());
         }
 
         private string GetValue(object value)
@@ -83,7 +84,7 @@ namespace ExpressionHelper.Helpers
                 case List<string> _:
                     return string.Join(",", value as List<string> ?? throw new InvalidOperationException());
                 default:
-                    throw new Exception("不支持的类型, 请自行添加类型支持\r\n" + nameof(value));
+                    throw new Exception("-----不支持的类型, 请自行添加类型支持-----\r\n" + nameof(value));
             }
         }
     }

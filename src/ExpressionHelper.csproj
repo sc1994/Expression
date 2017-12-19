@@ -45,6 +45,7 @@
     <Compile Include="Helpers\MemberExpressionHelper.cs" />
     <Compile Include="Helpers\MethodCallExpressionHelper.cs" />
     <Compile Include="Helpers\ParameterExpressionHelper.cs" />
+    <Compile Include="Helpers\UnaryExpressionHelper.cs" />
     <Compile Include="HelperTool.cs" />
     <Compile Include="Helpers\Base\BaseExpressionHelper.cs" />
     <Compile Include="Helpers\BinaryExpressionHelper.cs" />

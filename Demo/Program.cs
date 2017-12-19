@@ -13,9 +13,11 @@ namespace Demo
         {
             var a = DateTime.Now;
             var b = "1";
-            var c = new [] { 2, 3, 4, 5 };
+            var c = new[] { 2, 3, 4, 5 };
             Expression<Func<Product, bool>> exp =
-                x => c.Any(u => u == x.Id);
+                x => c.Contains(x.Id)
+                || c.Any(u => u == x.Id)
+                && x.Data == DateTime.Now;
 
             var arg = new ExpressionInfo();
             HelperTool.AddWhere(exp.Body, arg);
