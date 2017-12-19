@@ -12,13 +12,13 @@ namespace ExpressionHelper.Helpers
         {
             if (exp.Type.Name.Contains("DisplayClass"))
             {
-                //var type = exp.Value.GetType();
-                //var value = type.InvokeMember("a", BindingFlags.GetField, null, exp.Value, null);
-                //HelperTool.Log(value, "ConstantExpression");
+                var type = exp.Value.GetType();
+                var value = type.InvokeMember(arg.ConstantName, BindingFlags.GetField, null, exp.Value, null);
+                Console.WriteLine(value);
             }
             else
             {
-                //HelperTool.Log(exp.Value, "ConstantExpression");
+                Console.WriteLine(exp.Value);
             }
         }
     }

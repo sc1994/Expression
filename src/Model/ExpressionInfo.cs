@@ -6,6 +6,8 @@ namespace ExpressionHelper.Model
     {
         public List<string> Exps { get; } = new List<string>();
 
+        public string ConstantName { get; set; } = string.Empty;
+
         public void Add(string value)
         {
             //if (value.Length >= 2)

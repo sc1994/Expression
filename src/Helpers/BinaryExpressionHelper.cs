@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 using ExpressionHelper.Model;
 
 namespace ExpressionHelper.Helpers
@@ -7,16 +8,11 @@ namespace ExpressionHelper.Helpers
     {
         public override void AddWhere(BinaryExpression exp, ExpressionInfo arg)
         {
-            var body = exp.ToString();
-            arg.Add(body.Replace(body.TrimStart('('), ""));
             HelperTool.AddWhere(exp.Left, arg);
-            arg.Add(body.Replace(body.TrimEnd(')'), ""));
 
+            Console.WriteLine(exp.NodeType.ToString());
 
-            arg.Add(body.Replace(body.TrimStart('('), ""));
             HelperTool.AddWhere(exp.Right, arg);
-            arg.Add(body.Replace(body.TrimEnd(')'), ""));
-
         }
     }
 }

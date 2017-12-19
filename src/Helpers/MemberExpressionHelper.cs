@@ -12,7 +12,11 @@ namespace ExpressionHelper.Helpers
         {
             if (exp.Expression != null)
             {
+                // 存储变量名称,再需要解析变量值的时候获取此字段的值
+                arg.ConstantName = exp.Member.Name;
                 HelperTool.AddWhere(exp.Expression, arg);
+                Console.WriteLine(exp.Member.Name);
+                arg.Add(exp.Member.Name);
             }
             else
             {

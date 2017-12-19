@@ -21,11 +21,16 @@ namespace ExpressionHelper
 
         private static readonly Dictionary<string, IExpressionHelper> Ports = InitPorts();
 
+        public static void AddWhere(Expression exp, ExpressionInfo arg)
+        {
+            GetPort(exp).AddWhere(exp, arg);
+        }
+
         /// <summary>
         /// 初始化接口实例
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, IExpressionHelper> InitPorts()
+        private static Dictionary<string, IExpressionHelper> InitPorts()
         {
             var ports = new Dictionary<string, IExpressionHelper>();
             var nameSpace = typeof(HelperTool).Namespace;
@@ -42,7 +47,7 @@ namespace ExpressionHelper
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
-        public static IExpressionHelper GetPort(Expression exp)
+        private static IExpressionHelper GetPort(Expression exp)
         {
             var type = SwitchExpression(exp);
             //Console.WriteLine(type);
@@ -50,32 +55,12 @@ namespace ExpressionHelper
             return Ports[type];
         }
 
-        public static void Log(object body, string type)
-        {
-            var path = "D:\\Self\\Expression" + "\\log\\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
-            var str = new StringBuilder();
-            str.AppendLine("----------------------------------------------------------");
-            str.AppendLine("时间:" + DateTime.Now);
-            str.AppendLine("表达式类型:" + type);
-            str.AppendLine("表达式Body:" + body);
-            str.AppendLine("----------------------------------------------------------\r\n\r\n");
-            try
-            {
-                Console.Write(str);
-                File.AppendAllText(path, str.ToString(), Encoding.UTF8);
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
-        }
-
         /// <summary>
         /// 获取表达的类型描述
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
-        public static string SwitchExpression(Expression exp)
+        private static string SwitchExpression(Expression exp)
         {
             switch (exp)
             {
@@ -135,9 +120,24 @@ namespace ExpressionHelper
 
         }
 
-        public static void AddWhere(Expression exp, ExpressionInfo arg)
+        public static void Log(object body, string type)
         {
-            GetPort(exp).AddWhere(exp, arg);
+            var path = "D:\\Self\\Expression" + "\\log\\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            var str = new StringBuilder();
+            str.AppendLine("----------------------------------------------------------");
+            str.AppendLine("时间:" + DateTime.Now);
+            str.AppendLine("表达式类型:" + type);
+            str.AppendLine("表达式Body:" + body);
+            str.AppendLine("----------------------------------------------------------\r\n\r\n");
+            try
+            {
+                Console.Write(str);
+                File.AppendAllText(path, str.ToString(), Encoding.UTF8);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

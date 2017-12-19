@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Reflection;
 using ExpressionHelper;
 using ExpressionHelper.Model;
 
@@ -11,18 +9,16 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-            var a = "123";
+            var a = DateTime.Now;
+
             Expression<Func<Product, bool>> exp =
-                x => x.Name == "1" && (x.Id == 2 || x.Name == "3" || x.Id == 4);
+                x => x.Data == a || x.Name == "1";
 
             var arg = new ExpressionInfo();
             HelperTool.AddWhere(exp.Body, arg);
 
-            foreach (var item in arg.Exps)
-            {
-                Console.WriteLine($"{item}");
-            }
-            Console.WriteLine(exp.Body.ToString());
+            var r = new Random().Next(0, 100);
+
             Console.Write("END");
             Console.ReadLine();
         }
