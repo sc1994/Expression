@@ -16,7 +16,6 @@ namespace ExpressionHelper.Helpers
                 arg.ConstantName = exp.Member.Name;
                 HelperTool.AddWhere(exp.Expression, arg);
                 Console.WriteLine(exp.Member.Name);
-                arg.Add(exp.Member.Name);
             }
             else
             {
