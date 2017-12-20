@@ -78,7 +78,12 @@ namespace ExpressionHelper.Model
             {
                 throw new Exception(nameof(value));
             }
-            CurrentObject.Value.Add(value);
+            if (CurrentObject.Value == null)
+            {
+                CurrentObject.Value = value;
+                return;
+            }
+            CurrentMethod.Parameters.Add(value);
         }
 
         public void SetMethodParameter(object value)

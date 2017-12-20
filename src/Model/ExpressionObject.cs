@@ -18,7 +18,7 @@ namespace ExpressionHelper.Model
         /// 有多个值的可能
         /// 例: 数组
         /// </summary>
-        public List<object> Value { get; set; } = new List<object>();
+        public object Value { get; set; }
 
         /// <summary>
         /// 如果传入的是对象可能会有这个内容

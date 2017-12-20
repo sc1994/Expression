@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper;
@@ -19,13 +18,13 @@ namespace Demo
 
             var d = '1';
 
-            var b = "((abcdef))";
+            var b = new[] { "((abcdef))", "1", "6", "3" };
 
-            exp = x =>
-                      x.Name.StartsWith(b.Trim().ToLower(CultureInfo.CurrentCulture));
+            exp = x => b.Contains(x.Name);
 
             HelperTool.AddWhere(exp.Body, arg);
 
+            Console.WriteLine(arg.Expressions[0].Object[0].Value);
 
             var s = "";
             s.TrimStart();
@@ -68,7 +67,7 @@ namespace Demo
     {
         public string Name;
 
-        public int Id;
+        public int[] Id;
 
         public DateTime Data;
     }
