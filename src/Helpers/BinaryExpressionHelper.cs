@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper.Model;
 
@@ -10,11 +12,7 @@ namespace ExpressionHelper.Helpers
         {
             HelperTool.AddWhere(exp.Left, arg);
 
-            Console.WriteLine(exp.NodeType.ToString());
-            if (exp.NodeType == ExpressionType.AndAlso || exp.NodeType == ExpressionType.OrElse)
-            {
-                Console.WriteLine();
-            }
+            arg.SetRelation(exp.NodeType.ToString());
 
             HelperTool.AddWhere(exp.Right, arg);
         }

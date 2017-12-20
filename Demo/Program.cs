@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper;
 using ExpressionHelper.Model;
+//using SQLite;
 
 namespace Demo
 {
@@ -10,19 +10,35 @@ namespace Demo
     {
         static void Main(string[] args)
         {
+
             var a = DateTime.Now;
             var c = new[] { 2, 3, 4, 5 };
             var arg = new ExpressionInfo();
             Expression<Func<Product, bool>> exp;
 
-                
+            var d = '1';
+
             var b = "((abcdef))";
+
             exp = x =>
-               x.Name.StartsWith(b.TrimStart(')').TrimEnd('('));
+               x.Id > 1 || x.Id <= 10 || x.Data == DateTime.Now || 
+               x.Name == b;
 
             HelperTool.AddWhere(exp.Body, arg);
 
-            //todo
+
+            var s = "";
+            s.TrimStart();
+            s.TrimEnd();
+            s.Trim(',', ' ', ',', ' ');
+            s.Contains("");
+            s.StartsWith("");
+            s.EndsWith("");
+            s.Equals("");
+            s.ToLower();
+            s.ToUpper();
+
+
 
             //exp = x => b.Contains(x.Name);
             //HelperTool.AddWhere(exp.Body, arg);
@@ -40,27 +56,6 @@ namespace Demo
             //    };
 
             //HelperTool.AddWhere(exp1.Body, arg);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             Console.WriteLine(); Console.WriteLine(); Console.WriteLine();
             Console.WriteLine((DateTime.Now - a).ToString("c"));
