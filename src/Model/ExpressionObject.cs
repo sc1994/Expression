@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace ExpressionHelper.Model
 {
@@ -25,5 +26,10 @@ namespace ExpressionHelper.Model
         /// 但是没想到这个能干嘛
         /// </summary>
         public string ValueName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 一元运算符
+        /// </summary>
+        public string Unary { get; set; } = string.Empty;
     }
 }

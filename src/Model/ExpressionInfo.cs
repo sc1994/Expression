@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using static System.String;
 
 namespace ExpressionHelper.Model
@@ -32,6 +33,19 @@ namespace ExpressionHelper.Model
             Expressions.Add(new ExpressionModel());
         }
 
+        public void SetObjectUnary(ExpressionType type)
+        {
+            var supports = new[]
+                           {
+                               ExpressionType.Not
+                               // todo 急需扩充类型
+                           };
+            if (!supports.Contains(type))
+            {
+                throw new Exception(nameof(type));
+            }
+            CurrentObject.Unary = type.ToString();
+        }
 
         public void SetObjectAlias(string alias)
         {
@@ -52,14 +66,14 @@ namespace ExpressionHelper.Model
             {
                 throw new Exception(nameof(obj));
             }
-            if (IsNullOrEmpty(CurrentObject.Field))
-            {
-                CurrentObject.Field = obj;
-                return;
-            }
             if (IsNullOrEmpty(CurrentObject.ValueName))
             {
                 CurrentObject.ValueName = obj;
+                return;
+            }
+            if (IsNullOrEmpty(CurrentObject.Field))
+            {
+                CurrentObject.Field = obj;
                 return;
             }
             Current.Object.Add(new ExpressionObject
@@ -104,6 +118,7 @@ namespace ExpressionHelper.Model
         {
             var supports = new[]
                            {
+                               "ArrayIndex",
                                "Trim",
                                "TrimStart",
                                "TrimEnd",

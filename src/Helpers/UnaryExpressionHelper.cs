@@ -7,6 +7,7 @@ namespace ExpressionHelper.Helpers
     {
         public override void AddWhere(UnaryExpression exp, ExpressionInfo arg)
         {
+            arg.SetObjectUnary(exp.NodeType);
             HelperTool.AddWhere(exp.Operand, arg);
         }
     }

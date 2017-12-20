@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper;
 using ExpressionHelper.Model;
-//using SQLite;
 
 namespace Demo
 {
@@ -20,7 +18,7 @@ namespace Demo
 
             var b = new[] { "((abcdef))", "1", "6", "3" };
 
-            exp = x => b.Contains(x.Name);
+            exp = x => c[2] > x.Id;
 
             HelperTool.AddWhere(exp.Body, arg);
 
@@ -67,7 +65,7 @@ namespace Demo
     {
         public string Name;
 
-        public int[] Id;
+        public int Id;
 
         public DateTime Data;
     }
