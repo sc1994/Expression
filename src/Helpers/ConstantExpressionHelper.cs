@@ -14,11 +14,11 @@ namespace ExpressionHelper.Helpers
             {
                 var type = exp.Value.GetType();
                 var value = type.InvokeMember(arg.ConstantName, BindingFlags.GetField, null, exp.Value, null);
-                Console.WriteLine(GetValue(value));
+                arg.SetObjectValue(value); 
             }
             else
             {
-                Console.WriteLine(exp.Value);
+                arg.SetObjectValue(exp.Value);
             }
 
         }

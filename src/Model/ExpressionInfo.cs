@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using static System.String;
 
 namespace ExpressionHelper.Model
@@ -10,31 +9,75 @@ namespace ExpressionHelper.Model
     {
         public ExpressionInfo()
         {
-            Expressions.Add(new ExpressionModel());
+            Expressions = new List<ExpressionModel>
+                          {
+                              new ExpressionModel()
+                          };
+
         }
 
-        public List<ExpressionModel> Expressions { get; } = new List<ExpressionModel>();
+        public List<ExpressionModel> Expressions { get; }
 
         /// <summary>
         /// 存储变量名称,再需要解析变量值的时候获取此字段的值(算是无奈之举)
         /// </summary>
-        public string ConstantName { get; set; } = string.Empty;
+        public string ConstantName { get; set; } = Empty;
 
         private ExpressionModel Current => Expressions[Expressions.Count - 1];
+
+        private ExpressionObject CurrentObject => Current.Object[Current.Object.Count - 1];
 
         private void Add()
         {
             Expressions.Add(new ExpressionModel());
         }
 
+
         public void SetObjectAlias(string alias)
         {
-
+            if (IsNullOrEmpty(alias))
+            {
+                throw new Exception(nameof(alias));
+            }
+            CurrentObject.Alias = alias;
         }
 
-        public void SetObjectField(string field)
+        /// <summary>
+        /// 设置字段,或者值的别名
+        /// </summary>
+        /// <param name="obj"></param>
+        public void SetObject(string obj)
         {
+            if (IsNullOrEmpty(obj))
+            {
+                throw new Exception(nameof(obj));
+            }
+            if (IsNullOrEmpty(CurrentObject.Field))
+            {
+                CurrentObject.Field = obj;
+                return;
+            }
+            if (IsNullOrEmpty(CurrentObject.ValueName))
+            {
+                CurrentObject.ValueName = obj;
+                Current.Object.Add(new ExpressionObject());
+                return;
+            }
+            Current.Object.Add(new ExpressionObject());
+            CurrentObject.ValueName = obj;
+        }
 
+        /// <summary>
+        /// 设置表达式的值
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetObjectValue(object value)
+        {
+            if (value == null)
+            {
+                throw new Exception(nameof(value));
+            }
+            CurrentObject.Value.Add(value);
         }
 
         /// <summary>
@@ -46,6 +89,7 @@ namespace ExpressionHelper.Model
         {
             var supports = new[]
                            {
+                               "Trim",
                                "Contains",
                                "StartsWith",
                                "EndsWith",
@@ -81,7 +125,7 @@ namespace ExpressionHelper.Model
                 Current.Coexist = relation;
                 Add();
                 Console.WriteLine();
-                return; 
+                return;
             }
             if (IsNullOrEmpty(Current.Relation))
             {

@@ -9,7 +9,6 @@ namespace ExpressionHelper.Helpers
         public override void AddWhere(MethodCallExpression exp, ExpressionInfo arg)
         {
             arg.SetRelation(exp.Method.Name);
-            Console.WriteLine(exp.Method.Name);
             foreach (var argument in exp.Arguments)
             {
                 HelperTool.AddWhere(argument, arg);

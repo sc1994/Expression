@@ -5,10 +5,23 @@ namespace ExpressionHelper.Model
 {
     public class ExpressionModel
     {
+
+        public ExpressionModel()
+        {
+            Object = new List<ExpressionObject>
+                     {
+                         new ExpressionObject()
+                     };
+            Methods = new List<ExpressionMethod>
+                      {
+                          new ExpressionMethod()
+                      };
+        }
+
         /// <summary>
         /// 调用的方法集合
         /// </summary>
-	    public List<ExpressionMethod> Methods { get; set; } = new List<ExpressionMethod>();
+	    public List<ExpressionMethod> Methods { get; set; }
 
         /// <summary>
         /// 表达式的具体对象
@@ -16,7 +29,7 @@ namespace ExpressionHelper.Model
         /// Alias = "x";
         /// Field = "Name";
         /// </summary>
-        public List<ExpressionObject> Object { get; set; } = new List<ExpressionObject>();
+        public List<ExpressionObject> Object { get; set; }
 
         /// <summary>
         /// 表达式的关系 能够返回bool 的条件关系 

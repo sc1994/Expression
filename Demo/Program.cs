@@ -10,7 +10,6 @@ namespace Demo
     {
         static void Main(string[] args)
         {
-
             var a = DateTime.Now;
             var c = new[] { 2, 3, 4, 5 };
             var arg = new ExpressionInfo();
@@ -21,8 +20,7 @@ namespace Demo
             var b = "((abcdef))";
 
             exp = x =>
-               x.Id > 1 || x.Id <= 10 || x.Data == DateTime.Now || 
-               x.Name == b;
+                      x.Name.Contains(b.Trim('(', ')'));
 
             HelperTool.AddWhere(exp.Body, arg);
 

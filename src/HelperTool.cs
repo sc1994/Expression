@@ -56,8 +56,7 @@ namespace ExpressionHelper
         private static IExpressionHelper GetPort(Expression exp)
         {
             var type = SwitchExpression(exp);
-            //Console.WriteLine(type);
-            //Log(exp.ToString(), type);
+            
             return Ports[type];
         }
 
