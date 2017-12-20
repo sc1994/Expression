@@ -18,7 +18,7 @@ namespace ExpressionHelper.Helpers
             }
             else
             {
-                arg.SetObjectValue(exp.Value);
+                arg.SetMethodParameter(exp.Value);
             }
 
         }

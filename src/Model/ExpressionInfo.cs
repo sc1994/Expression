@@ -24,8 +24,8 @@ namespace ExpressionHelper.Model
         public string ConstantName { get; set; } = Empty;
 
         private ExpressionModel Current => Expressions[Expressions.Count - 1];
-
         private ExpressionObject CurrentObject => Current.Object[Current.Object.Count - 1];
+        private ExpressionMethod CurrentMethod => Current.Methods[Current.Methods.Count - 1];
 
         private void Add()
         {
@@ -60,11 +60,12 @@ namespace ExpressionHelper.Model
             if (IsNullOrEmpty(CurrentObject.ValueName))
             {
                 CurrentObject.ValueName = obj;
-                Current.Object.Add(new ExpressionObject());
                 return;
             }
-            Current.Object.Add(new ExpressionObject());
-            CurrentObject.ValueName = obj;
+            Current.Object.Add(new ExpressionObject
+            {
+                Field = obj
+            });
         }
 
         /// <summary>
@@ -80,6 +81,15 @@ namespace ExpressionHelper.Model
             CurrentObject.Value.Add(value);
         }
 
+        public void SetMethodParameter(object value)
+        {
+            if (value == null)
+            {
+                throw new Exception(nameof(value));
+            }
+            CurrentMethod.Parameters.Add(value);
+        }
+
         /// <summary>
         /// 设置关系
         /// 关系包含了: 方法,等式,表达式之间的条件关系
@@ -90,6 +100,11 @@ namespace ExpressionHelper.Model
             var supports = new[]
                            {
                                "Trim",
+                               "TrimStart",
+                               "TrimEnd",
+                               "ToLower",
+                               "ToUpper",
+                               "Any",
                                "Contains",
                                "StartsWith",
                                "EndsWith",
@@ -119,12 +134,10 @@ namespace ExpressionHelper.Model
             {
                 throw new Exception(nameof(relation));
             }
-            Console.WriteLine(relation);
             if (coexists.Contains(relation))
             {
                 Current.Coexist = relation;
                 Add();
-                Console.WriteLine();
                 return;
             }
             if (IsNullOrEmpty(Current.Relation))
@@ -132,10 +145,10 @@ namespace ExpressionHelper.Model
                 Current.Relation = relation;
                 return;
             }
-            var method = Current.Methods[Current.Methods.Count - 1];
-            if (IsNullOrEmpty(method.Method))
+
+            if (IsNullOrEmpty(CurrentMethod.Method))
             {
-                method.Method = relation;
+                CurrentMethod.Method = relation;
                 return;
             }
             Current.Methods.Add(new ExpressionMethod

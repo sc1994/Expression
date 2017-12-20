@@ -6,6 +6,6 @@ namespace ExpressionHelper.Model
 	{
 		public string Method { get; set; }
 
-		public List<string> Parameters { get; set; } = new List<string>();
+		public List<object> Parameters { get; set; } = new List<object>();
 	}
 }

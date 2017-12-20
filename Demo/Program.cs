@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
 using ExpressionHelper;
 using ExpressionHelper.Model;
@@ -8,7 +10,7 @@ namespace Demo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var a = DateTime.Now;
             var c = new[] { 2, 3, 4, 5 };
@@ -20,7 +22,7 @@ namespace Demo
             var b = "((abcdef))";
 
             exp = x =>
-                      x.Name.Contains(b.Trim('(', ')'));
+                      x.Name.StartsWith(b.Trim().ToLower(CultureInfo.CurrentCulture));
 
             HelperTool.AddWhere(exp.Body, arg);
 

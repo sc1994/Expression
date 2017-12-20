@@ -51,7 +51,6 @@
     <Compile Include="Helpers\Base\BaseExpressionHelper.cs" />
     <Compile Include="Helpers\BinaryExpressionHelper.cs" />
     <Compile Include="Helpers\Base\IExpressionHelper.cs" />
-    <Compile Include="Model\Enum.cs" />
     <Compile Include="Model\ExpressionInfo.cs" />
     <Compile Include="Model\ExpressionMethod.cs" />
     <Compile Include="Model\ExpressionModel.cs" />
