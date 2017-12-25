@@ -45,13 +45,15 @@ else if(exp.Body is MethodCallExpression body){
 }
 else if......
 ```
+#### TODO
+
 
 #### 目标
-- [ ]  将表达式树拆解成最小状态的表达式
-- [ ]  支持 System.Linq.Expressions.BinaryExpression
+- 将表达式树拆解成最小状态的表达式
+- [x]  支持 System.Linq.Expressions.BinaryExpression
 - [ ]  支持 System.Linq.Expressions.BlockExpression
 - [ ]  支持 System.Linq.Expressions.ConditionalExpression
-- [ ]  支持 System.Linq.Expressions.ConstantExpression
+- [x]  支持 System.Linq.Expressions.ConstantExpression
 - [ ]  支持 System.Linq.Expressions.DebugInfoExpression
 - [ ]  支持 System.Linq.Expressions.DefaultExpression
 - [ ]  支持 System.Linq.Expressions.DynamicExpression
@@ -59,20 +61,20 @@ else if......
 - [ ]  支持 System.Linq.Expressions.IndexExpression
 - [ ]  支持 System.Linq.Expressions.InvocationExpression
 - [ ]  支持 System.Linq.Expressions.LabelExpression
-- [ ]  支持 System.Linq.Expressions.LambdaExpression
+- [x]  支持 System.Linq.Expressions.LambdaExpression
 - [ ]  支持 System.Linq.Expressions.ListInitExpression
 - [ ]  支持 System.Linq.Expressions.LoopExpression
-- [ ]  支持 System.Linq.Expressions.MemberExpression
+- [x]  支持 System.Linq.Expressions.MemberExpression
 - [ ]  支持 System.Linq.Expressions.MemberInitExpression
-- [ ]  支持 System.Linq.Expressions.MethodCallExpression
-- [ ]  支持 System.Linq.Expressions.NewArrayExpression
+- [x]  支持 System.Linq.Expressions.MethodCallExpression
+- [x]  支持 System.Linq.Expressions.NewArrayExpression
 - [ ]  支持 System.Linq.Expressions.NewExpression
-- [ ]  支持 System.Linq.Expressions.ParameterExpression
+- [x]  支持 System.Linq.Expressions.ParameterExpression
 - [ ]  支持 System.Linq.Expressions.RuntimeVariablesExpression
 - [ ]  支持 System.Linq.Expressions.SwitchExpression
 - [ ]  支持 System.Linq.Expressions.TryExpression
 - [ ]  支持 System.Linq.Expressions.TypeBinaryExpression
-- [ ]  支持 System.Linq.Expressions.UnaryExpression
+- [x]  支持 System.Linq.Expressions.UnaryExpression
 #### 支持Sql
 - [ ]  AddShow
 - [ ]  AddWhere
