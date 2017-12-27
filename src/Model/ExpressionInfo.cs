@@ -38,7 +38,7 @@ namespace ExpressionHelper.Model
             var supports = new[]
                            {
                                ExpressionType.Not
-                               // todo 急需扩充类型
+                               // todo 需扩充类型
                            };
             if (!supports.Contains(type))
             {
@@ -66,14 +66,14 @@ namespace ExpressionHelper.Model
             {
                 throw new Exception(nameof(obj));
             }
-            if (IsNullOrEmpty(CurrentObject.ValueName))
-            {
-                CurrentObject.ValueName = obj;
-                return;
-            }
             if (IsNullOrEmpty(CurrentObject.Field))
             {
                 CurrentObject.Field = obj;
+                return;
+            }
+            if (IsNullOrEmpty(CurrentObject.ValueName))
+            {
+                CurrentObject.ValueName = obj;
                 return;
             }
             Current.Object.Add(new ExpressionObject
