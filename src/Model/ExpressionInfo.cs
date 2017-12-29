@@ -14,7 +14,6 @@ namespace ExpressionHelper.Model
                           {
                               new ExpressionModel()
                           };
-
         }
 
         public List<ExpressionModel> Expressions { get; }
@@ -27,10 +26,40 @@ namespace ExpressionHelper.Model
         private ExpressionModel Current => Expressions[Expressions.Count - 1];
         private ExpressionObject CurrentObject => Current.Object[Current.Object.Count - 1];
         private ExpressionMethod CurrentMethod => Current.Methods[Current.Methods.Count - 1];
+        private ExpressionMember CurrentMember => Current.Member[Current.Member.Count - 1];
 
         private void Add()
         {
             Expressions.Add(new ExpressionModel());
+        }
+
+        public void SetNewMember(string member)
+        {
+            if (IsNullOrEmpty(member))
+            {
+                throw new Exception(nameof(member));
+            }
+            if (member.IndexOf(".") > -1)
+            {
+                var memberArr = member.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+                CurrentMember.Alias = memberArr[0];
+                CurrentMember.Field = memberArr[1];
+                return;
+            }
+            if (IsNullOrEmpty(CurrentMember.Alias))
+            {
+                CurrentMember.Alias = member;
+                return;
+            }
+            if (IsNullOrEmpty(CurrentMember.Field))
+            {
+                CurrentMember.Field = member;
+                return;
+            }
+            Current.Member.Add(new ExpressionMember
+            {
+                Alias = member
+            });
         }
 
         public void SetObjectUnary(ExpressionType type)

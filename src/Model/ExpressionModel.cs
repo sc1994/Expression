@@ -16,12 +16,16 @@ namespace ExpressionHelper.Model
                       {
                           new ExpressionMethod()
                       };
+            Member = new List<ExpressionMember>
+                        {
+                            new ExpressionMember()
+                        };
         }
 
         /// <summary>
         /// 调用的方法集合
         /// </summary>
-	    public List<ExpressionMethod> Methods { get; set; }
+	    public List<ExpressionMethod> Methods { get; }
 
         /// <summary>
         /// 表达式的具体对象
@@ -29,7 +33,12 @@ namespace ExpressionHelper.Model
         /// Alias = "x";
         /// Field = "Name";
         /// </summary>
-        public List<ExpressionObject> Object { get; set; }
+        public List<ExpressionObject> Object { get; }
+
+        /// <summary>
+        /// 对象的成员,这边混乱的指代了 只有包含成员的情况
+        /// </summary>
+        public List<ExpressionMember> Member { get; }
 
         /// <summary>
         /// 表达式的关系 能够返回bool 的条件关系 

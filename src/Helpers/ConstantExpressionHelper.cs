@@ -8,6 +8,11 @@ namespace ExpressionHelper.Helpers
 {
     public class ConstantExpressionHelper : BaseExpressionHelper<ConstantExpression>
     {
+        public override void AddShow(ConstantExpression exp, ExpressionInfo arg)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void AddWhere(ConstantExpression exp, ExpressionInfo arg)
         {
             if (exp.Type.Name.Contains("DisplayClass"))

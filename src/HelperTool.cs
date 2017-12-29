@@ -19,7 +19,8 @@ namespace ExpressionHelper
             "MethodCallExpression",
             "LambdaExpression",
             "UnaryExpression",
-            "NewArrayExpression"
+            "NewArrayExpression",
+            "NewExpression"
         };
 
         private static readonly Dictionary<string, IExpressionHelper> Ports = InitPorts();
@@ -29,6 +30,14 @@ namespace ExpressionHelper
             if (exp != null)
             {
                 GetPort(exp).AddWhere(exp, arg);
+            }
+        }
+
+        public static void AddShow(Expression exp, ExpressionInfo arg)
+        {
+            if (exp != null)
+            {
+                GetPort(exp).AddShow(exp, arg);
             }
         }
 

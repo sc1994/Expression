@@ -45,6 +45,7 @@
     <Compile Include="Helpers\MemberExpressionHelper.cs" />
     <Compile Include="Helpers\MethodCallExpressionHelper.cs" />
     <Compile Include="Helpers\NewArrayExpressionHelper.cs" />
+    <Compile Include="Helpers\NewExpressionHelper.cs" />
     <Compile Include="Helpers\ParameterExpressionHelper.cs" />
     <Compile Include="Helpers\UnaryExpressionHelper.cs" />
     <Compile Include="HelperTool.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Helpers\BinaryExpressionHelper.cs" />
     <Compile Include="Helpers\Base\IExpressionHelper.cs" />
     <Compile Include="Model\ExpressionInfo.cs" />
+    <Compile Include="Model\ExpressionMember.cs" />
     <Compile Include="Model\ExpressionMethod.cs" />
     <Compile Include="Model\ExpressionModel.cs" />
     <Compile Include="Model\ExpressionObject.cs" />

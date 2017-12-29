@@ -6,6 +6,11 @@ namespace ExpressionHelper.Helpers
 {
     public class MethodCallExpressionHelper : BaseExpressionHelper<MethodCallExpression>
     {
+        public override void AddShow(MethodCallExpression exp, ExpressionInfo arg)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void AddWhere(MethodCallExpression exp, ExpressionInfo arg)
         {
             arg.SetRelation(exp.Method.Name);

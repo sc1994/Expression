@@ -7,6 +7,11 @@ namespace ExpressionHelper.Helpers
 {
     class MemberExpressionHelper : BaseExpressionHelper<MemberExpression>
     {
+        public override void AddShow(MemberExpression exp, ExpressionInfo arg)
+        {
+            arg.SetNewMember(exp.ToString());
+        }
+
         public override void AddWhere(MemberExpression exp, ExpressionInfo arg)
         {
             if (exp.Expression != null)

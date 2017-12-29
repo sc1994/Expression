@@ -12,15 +12,19 @@ namespace Demo
             var a = DateTime.Now;
             var c = new[] { 2, 3, 4, 5 };
             var arg = new ExpressionInfo();
-            Expression<Func<Product, bool>> exp;
+            Expression<Func<Product, dynamic>> exp;
 
             var d = "1";
 
             var b = new[] { "((abcdef))", "1", "6", "3" };
 
-            exp = x => x.Name == b[2];
+            exp = x => new
+            {
+                x.Data,
+                x.Id
+            };
 
-            HelperTool.AddWhere(exp.Body, arg);
+            HelperTool.AddShow(exp.Body, arg);
 
             Console.WriteLine("*********************START****************************");
 
